@@ -120,7 +120,6 @@ if [ "${build}" = "yes" ]; then
         for arch in "${ARCHS[@]}"; do
             if test -e Dockerfile.${arch}; then
                 build "${arch}"
-                build "${arch}" "profiling"
             fi
         done
     else
