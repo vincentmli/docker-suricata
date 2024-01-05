@@ -77,6 +77,7 @@ RUN \
         apt-get update -y && apt-get install -y \
         findutils \
         iproute2 \
+	iptables \
 	libjansson4 \
 	libyaml-0-2 \
         libnet1 \
@@ -90,7 +91,8 @@ RUN \
         which \
 	libxdp1 \
 	libbpf1 \
-	libelf1
+	libelf1 \
+	xdp-tools
 
 RUN apt-get install -y ca-certificates && update-ca-certificates
  
@@ -100,6 +102,7 @@ COPY --from=builder /fakeroot /
 RUN mkdir -p /var/log/suricata /var/run/suricata /var/lib/suricata
 
 COPY /update.yaml /etc/suricata/update.yaml
+COPY /suricata-xdp.yaml /etc/suricata/suricata-xdp.yaml
 COPY /suricata.logrotate /etc/logrotate.d/suricata
 
 RUN ldconfig

@@ -15,6 +15,9 @@ for src in /etc/suricata.dist/*; do
     fi
 done
 
-ARGS=""
+mount bpffs /sys/fs/bpf -t bpf
+mount  --make-shared /sys/fs/bpf
+
+ARGS="-c /etc/suricata/suricata-xdp.yaml"
 
 exec /usr/bin/suricata ${ARGS} ${SURICATA_OPTIONS} $@
