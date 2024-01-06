@@ -20,4 +20,6 @@ mount  --make-shared /sys/fs/bpf
 
 ARGS="-c /etc/suricata/suricata-xdp.yaml"
 
+#INTERFACE=$(echo $SURICATA_OPTIONS | sed -e 's/^.*af-packet=//g' -e 's/\s.*$//g')
+
 exec /usr/bin/suricata ${ARGS} ${SURICATA_OPTIONS} $@
