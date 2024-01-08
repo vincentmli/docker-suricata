@@ -105,6 +105,8 @@ COPY /update.yaml /etc/suricata/update.yaml
 COPY /suricata-xdp.yaml /etc/suricata/suricata-xdp.yaml
 COPY /bpftool /usr/sbin/bpftool
 COPY /xdp_synproxy /usr/sbin/xdp_synproxy
+COPY /iptadd-rules.sh /usr/sbin/iptadd-rules.sh
+COPY /iptdel-rules.sh /usr/sbin/iptdel-rules.sh
 COPY /suricata.logrotate /etc/logrotate.d/suricata
 
 RUN ldconfig
@@ -119,3 +121,5 @@ VOLUME /etc/suricata
 
 COPY /docker-entrypoint.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]
+
+STOPSIGNAL SIGTERM
