@@ -92,7 +92,8 @@ RUN \
 	libxdp1 \
 	libbpf1 \
 	libelf1 \
-	xdp-tools
+	xdp-tools \
+	suricata-update
 
 RUN apt-get install -y ca-certificates && update-ca-certificates
  
