@@ -104,6 +104,7 @@ RUN mkdir -p /var/log/suricata /var/run/suricata /var/lib/suricata
 
 COPY /update.yaml /etc/suricata/update.yaml
 COPY /suricata-xdp.yaml /etc/suricata/suricata-xdp.yaml
+COPY /local.rules /var/lib/suricata/rules/local.rules
 COPY /bpftool /usr/sbin/bpftool
 COPY /xdp_synproxy /usr/sbin/xdp_synproxy
 COPY /iptadd-rules.sh /usr/sbin/iptadd-rules.sh
