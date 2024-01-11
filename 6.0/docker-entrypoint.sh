@@ -95,7 +95,7 @@ if [ ! -z "$prog_id" ]; then
 	RULE_COMMENT="-m comment --comment "XDPSYNPROXY""
 	LINE=1
 
-	for p in $(echo $SYNPROXY_PORTS | sed 's/,/ /')
+	for p in $(echo $SYNPROXY_PORTS | sed 's/,/ /g')
 	do
 		iptables -t raw -I PREROUTING $LINE -i $INTERFACE $RULE_COMMENT -p tcp -m tcp --syn --dport $p $CT
 		iptables -I INPUT $LINE -i $INTERFACE $RULE_COMMENT -p tcp -m tcp --dport $p $SYNPROXY
