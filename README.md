@@ -1,3 +1,28 @@
+
+# Suricata Docker Image with eBPF XDP SYNPROXY DDOS
+
+- 6.0.9: Suricata 6.0.9 is patched with XDP SYNPROXY
+  https://github.com/vincentmli/suricata/commits/suricata-6.0.9-multixdp
+
+Examples:
+
+    docker pull vli39/suricata:xdp
+
+## Usage
+
+	docker run --rm -it --privileged --net=host --name suricata \
+              -v $(pwd)/etc/suricata:/etc/suricata  -d  \
+              -e SURICATA_OPTIONS="--af-packet=eth0 -vvv" \
+              -e SYNPROXY_PORTS="22,80,8080" vli39/suricata:xdp
+
+## Requirements 
+
+XDP SYNPROXY requires host kernel 6.2 and above, and Netfilter conntrack, SYNPROXY module loaded
+
+## Demo
+
+[![Suricata XDP SYNPROXY DDOS](http://img.youtube.com/vi/U8l-hwL8ko8/0.jpg)](https://www.youtube.com/watch?v=U8l-hwL8ko8 "Suricata XDP SYNPROXY DDOS")
+
 # Suricata Docker Image
 
 ## Docker Tags (Suricata Versions)
